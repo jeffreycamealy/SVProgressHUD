@@ -13,6 +13,8 @@
 
 #import "SVProgressHUD.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIFont+NovecentoFont.h"
+
 
 NSString * const SVProgressHUDDidReceiveTouchEventNotification = @"SVProgressHUDDidReceiveTouchEventNotification";
 NSString * const SVProgressHUDWillDisappearNotification = @"SVProgressHUDWillDisappearNotification";
@@ -650,7 +652,7 @@ CGFloat SVProgressHUDRingThickness = 6;
 - (UIView *)hudView {
     if(!hudView) {
         hudView = [[UIView alloc] initWithFrame:CGRectZero];
-        hudView.layer.cornerRadius = 10;
+        hudView.layer.cornerRadius = 5;
         hudView.layer.masksToBounds = YES;
         
         // UIAppearance is used when iOS >= 5.0
@@ -780,17 +782,18 @@ CGFloat SVProgressHUDRingThickness = 6;
 }
 
 - (UIFont *)hudFont {
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 50000
-    if(_uiHudFont == nil) {
-        _uiHudFont = [[[self class] appearance] hudFont];
-    }
-    
-    if(_uiHudFont != nil) {
-        return _uiHudFont;
-    }
-#endif
-    
-    return [UIFont boldSystemFontOfSize:16];
+//#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 50000
+//    if(_uiHudFont == nil) {
+//        _uiHudFont = [[[self class] appearance] hudFont];
+//    }
+//    
+//    if(_uiHudFont != nil) {
+//        return _uiHudFont;
+//    }
+//#endif
+//    
+//    return [UIFont boldSystemFontOfSize:16];
+    return [UIFont novecentoDemiBoldFontWithSize:16];
 }
 
 - (UIImage *)hudSuccessImage {
